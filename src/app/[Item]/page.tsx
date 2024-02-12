@@ -1,7 +1,9 @@
 import MessageBox from "@/components/message-box";
-import Image from "next/image";
+import React from "react";
 
-export default function Home() {
+type Props = {};
+
+export default function ItemPage({}: Props) {
   return (
     <div className="h-full">
       <MessageBox />

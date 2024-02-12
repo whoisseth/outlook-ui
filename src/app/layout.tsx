@@ -1,6 +1,13 @@
+/** @format */
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar";
+import { cn } from "@/utils/cn";
+import FixedSidebar from "@/components/fixed-sidebar";
+import Header from "@/components/header";
+import Sidebar from "@/components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +22,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="h-full">
+      <body
+        className={cn(" flex h-full min-h-screen flex-col ", inter.className)}
+      >
+        <Navbar />
+
+        <div className="flex h-full w-full  ">
+          <FixedSidebar />
+
+          <section className="flex w-full flex-col">
+            <Header />
+            <div className="flex h-full  ">
+              <Sidebar />
+              <main className=" h-full w-full bg-gray-200/80 p-2 ">
+                {children}
+              </main>
+            </div>
+          </section>
+        </div>
+      </body>
     </html>
   );
 }
